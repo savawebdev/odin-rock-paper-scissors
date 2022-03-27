@@ -1,12 +1,13 @@
 // Selects the player choice buttons
-const rockBtn = document.querySelector("#rock");
-const paperBtn = document.querySelector("#paper");
-const scissorsBtn = document.querySelector("#scissors");
 const gameBtns = document.querySelectorAll(".btn");
 
 // Selects the elemnt to show the round result
 const results = document.querySelector(".results");
 const resultText = document.querySelector("#result");
+
+// Select the score elements
+const playerScoreText = document.querySelector("#player-score");
+const computerScoreText = document.querySelector("#computer-score");
 
 // Returns a random computer choice from rock, paper, scissors
 function computerPlay() {
@@ -69,6 +70,9 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
 gameBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     console.log(e.target);
@@ -76,5 +80,13 @@ gameBtns.forEach((btn) => {
     const computerSelection = computerPlay();
 
     const roundResult = playRound(playerSelection, computerSelection);
+
+    if (roundResult === "playerWins") {
+      playerScore++;
+      playerScoreText.textContent = playerScore;
+    } else if (roundResult === "computerWins") {
+      computerScore++;
+      computerScoreText.textContent = computerScore;
+    }
   });
 });
