@@ -18,30 +18,48 @@ function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
 
   if (playerSelection === computerSelection) {
-    return `It's a draw! You both selected ${playerSelection}!`;
+    console.log(`It's a draw! You both selected ${playerSelection}!`);
+
+    return "draw";
   }
 
-  if (playerSelection === "rock") {
-    if (computerSelection === "paper") {
-      return `You lose! ${computerSelection} beats ${playerSelection}`;
-    } else {
-      return `You win! ${playerSelection} beats ${computerSelection}`;
-    }
-  }
+  switch (playerSelection) {
+    case "rock":
+      if (computerSelection === "paper") {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return "computerWins";
+      } else {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        return "playerWins";
+      }
+      break;
 
-  if (playerSelection === "paper") {
-    if (computerSelection === "rock") {
-      return `You win! ${playerSelection} beats ${computerSelection}`;
-    } else {
-      return `You lose! ${computerSelection} beats ${playerSelection}`;
-    }
-  }
+    case "paper":
+      if (computerSelection === "rock") {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        return "playerWins";
+      } else {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return "computerWins";
+      }
+      break;
 
-  if (playerSelection === "scissors") {
-    if (computerSelection === "rock") {
-      return `You lose! ${computerSelection} beats ${playerSelection}`;
-    } else {
-      return `You win! ${playerSelection} beats ${computerSelection}`;
-    }
+    case "scissors":
+      if (computerSelection === "rock") {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return "computerWins";
+      } else {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        return "playerWins";
+      }
+      break;
+    default:
+      console.log("Invalid choice");
+      return;
   }
+}
+
+function game() {
+  playerScore = 0;
+  playerScore = 0;
 }
