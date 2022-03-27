@@ -53,9 +53,11 @@ function playRound(playerSelection, computerSelection) {
         return "playerWins";
       }
       break;
+
     default:
       console.log("Invalid choice");
       return;
+      break;
   }
 }
 
@@ -68,7 +70,9 @@ function game() {
   console.log(`Computer Score: ${computerScore}`);
 
   for (let i = 1; i <= 5; i++) {
-    const playerSelection = window.prompt();
+    const playerSelection = window.prompt(
+      "Enter your choice (rock, paper, scissors):"
+    );
 
     result = playRound(playerSelection, computerPlay());
 
@@ -88,3 +92,5 @@ function game() {
     console.log(`Computer Score: ${computerScore}`);
   }
 }
+
+game();
