@@ -76,6 +76,30 @@ function playRound(playerSelection, computerSelection) {
 let playerScore = 0;
 let computerScore = 0;
 
+function updateScore(roundResult) {
+  if (roundResult === "playerWins") {
+    playerScore++;
+    playerScoreText.textContent = playerScore;
+  } else if (roundResult === "computerWins") {
+    computerScore++;
+    computerScoreText.textContent = computerScore;
+  }
+}
+
+function checkForWinner() {
+  if (playerScore === 5) {
+    resultText.textContent = "Player wins the game!";
+    disableButtons();
+    resetBtn.classList.toggle("hidden");
+  }
+
+  if (computerScore === 5) {
+    resultText.textContent = "Computer wins the game!";
+    disableButtons();
+    resetBtn.classList.toggle("hidden");
+  }
+}
+
 function disableButtons() {
   gameBtns.forEach((btn) => {
     btn.disabled = true;
@@ -96,25 +120,10 @@ gameBtns.forEach((btn) => {
     const roundResult = playRound(playerSelection, computerSelection);
 
     // Update the score
-    if (roundResult === "playerWins") {
-      playerScore++;
-      playerScoreText.textContent = playerScore;
-    } else if (roundResult === "computerWins") {
-      computerScore++;
-      computerScoreText.textContent = computerScore;
-    }
+    updateScore(roundResult);
 
-    if (playerScore === 5) {
-      resultText.textContent = "Player wins the game!";
-      disableButtons();
-      resetBtn.classList.toggle("hidden");
-    }
-
-    if (computerScore === 5) {
-      resultText.textContent = "Computer wins the game!";
-      disableButtons();
-      resetBtn.classList.toggle("hidden");
-    }
+    // Check for winner
+    checkForWinner();
   });
 });
 
