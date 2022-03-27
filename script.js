@@ -75,12 +75,12 @@ let computerScore = 0;
 
 gameBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    console.log(e.target);
     const playerSelection = e.target.getAttribute("id");
     const computerSelection = computerPlay();
 
     const roundResult = playRound(playerSelection, computerSelection);
 
+    // Update the score
     if (roundResult === "playerWins") {
       playerScore++;
       playerScoreText.textContent = playerScore;
@@ -88,5 +88,21 @@ gameBtns.forEach((btn) => {
       computerScore++;
       computerScoreText.textContent = computerScore;
     }
+
+    if (playerScore === 5) {
+      resultText.textContent = "Player wins the game!";
+      disableButtons();
+    }
+
+    if (computerScore === 5) {
+      resultText.textContent = "Computer wins the game!";
+      disableButtons();
+    }
   });
 });
+
+function disableButtons() {
+  gameBtns.forEach((btn) => {
+    btn.disabled = true;
+  });
+}
