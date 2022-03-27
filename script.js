@@ -2,6 +2,7 @@
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
+const gameBtns = document.querySelectorAll(".btn");
 
 // Selects the elemnt to show the round result
 const results = document.querySelector(".results");
@@ -26,10 +27,8 @@ function computerPlay() {
 
 // Plays a round of RPS
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-
   if (playerSelection === computerSelection) {
-    console.log(`It's a draw! You both selected ${playerSelection}!`);
+    resultText.textContent = `It's a draw! Both players selected ${playerSelection}`;
 
     return "draw";
   }
@@ -70,6 +69,12 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-rockBtn.addEventListener("click", () => {
-  const roundResult = playRound("rock", computerPlay());
+gameBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    console.log(e.target);
+    const playerSelection = e.target.getAttribute("id");
+    const computerSelection = computerPlay();
+
+    const roundResult = playRound(playerSelection, computerSelection);
+  });
 });
