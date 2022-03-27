@@ -68,29 +68,6 @@ function game() {
   console.log(`Game Start!`);
   console.log(`Player Score: ${playerScore}`);
   console.log(`Computer Score: ${computerScore}`);
-
-  for (let i = 1; i <= 5; i++) {
-    const playerSelection = window.prompt(
-      "Enter your choice (rock, paper, scissors):"
-    );
-
-    result = playRound(playerSelection, computerPlay());
-
-    if (result === "draw") {
-      playerScore++;
-      computerScore++;
-    } else if (result === "playerWins") {
-      playerScore++;
-    } else if (result === "computerWins") {
-      computerScore++;
-    } else {
-      console.log(`Oops, something went wrong!`);
-      return;
-    }
-
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
-  }
 }
 
 game();
