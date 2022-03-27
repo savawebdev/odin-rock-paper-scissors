@@ -19,6 +19,7 @@
   background-color: #9ea93f;
   text-align: center;
   border-radius: 10px;
+  color: #181f1c;
 }
 
 .choices {
@@ -43,4 +44,19 @@
 
 .btn:hover {
   opacity: 0.7;
+}
+
+.results {
+  margin-top: 2rem;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9ea93f;
+  color: #181f1c;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
 }

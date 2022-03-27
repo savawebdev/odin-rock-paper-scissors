@@ -1,3 +1,13 @@
+// Selects the player choice buttons
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+
+// Selects the elemnt to show the round result
+const results = document.querySelector(".results");
+const resultText = document.querySelector("#result");
+
+// Returns a random computer choice from rock, paper, scissors
 function computerPlay() {
   randomChoice = Math.floor(Math.random() * 3);
 
@@ -14,6 +24,7 @@ function computerPlay() {
   }
 }
 
+// Plays a round of RPS
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
 
@@ -26,48 +37,39 @@ function playRound(playerSelection, computerSelection) {
   switch (playerSelection) {
     case "rock":
       if (computerSelection === "paper") {
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        resultText.textContent = `Player chose ${playerSelection}, computer chose ${computerSelection}. Computer wins!`;
         return "computerWins";
       } else {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        resultText.textContent = `Player chose ${playerSelection}, computer chose ${computerSelection}. Player wins!`;
         return "playerWins";
       }
       break;
 
     case "paper":
       if (computerSelection === "rock") {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        resultText.textContent = `Player chose ${playerSelection}, computer chose ${computerSelection}. Player wins!`;
         return "playerWins";
       } else {
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        resultText.textContent = `Player chose ${playerSelection}, computer chose ${computerSelection}. Computer wins!`;
         return "computerWins";
       }
       break;
 
     case "scissors":
       if (computerSelection === "rock") {
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        resultText.textContent = `Player chose ${playerSelection}, computer chose ${computerSelection}. Computer wins!`;
         return "computerWins";
       } else {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        resultText.textContent = `Player chose ${playerSelection}, computer chose ${computerSelection}. Player wins!`;
         return "playerWins";
       }
       break;
 
     default:
-      console.log("Invalid choice");
-      return;
       break;
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-
-  console.log(`Game Start!`);
-  console.log(`Player Score: ${playerScore}`);
-  console.log(`Computer Score: ${computerScore}`);
-}
-
-game();
+rockBtn.addEventListener("click", () => {
+  const roundResult = playRound("rock", computerPlay());
+});
