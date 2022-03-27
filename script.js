@@ -1,5 +1,8 @@
 // Selects the player choice buttons
-const gameBtns = document.querySelectorAll(".btn");
+const gameBtns = document.querySelectorAll(".game-btn");
+
+// Select the reset buttong
+const resetBtn = document.querySelector("#reset");
 
 // Selects the elemnt to show the round result
 const results = document.querySelector(".results");
@@ -73,6 +76,18 @@ function playRound(playerSelection, computerSelection) {
 let playerScore = 0;
 let computerScore = 0;
 
+function disableButtons() {
+  gameBtns.forEach((btn) => {
+    btn.disabled = true;
+  });
+}
+
+function enableButtons() {
+  gameBtns.forEach((btn) => {
+    btn.disabled = false;
+  });
+}
+
 gameBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const playerSelection = e.target.getAttribute("id");
@@ -92,17 +107,25 @@ gameBtns.forEach((btn) => {
     if (playerScore === 5) {
       resultText.textContent = "Player wins the game!";
       disableButtons();
+      resetBtn.classList.toggle("hidden");
     }
 
     if (computerScore === 5) {
       resultText.textContent = "Computer wins the game!";
       disableButtons();
+      resetBtn.classList.toggle("hidden");
     }
   });
 });
 
-function disableButtons() {
-  gameBtns.forEach((btn) => {
-    btn.disabled = true;
-  });
-}
+resetBtn.addEventListener("click", () => {
+  playerScore = 0;
+  computerScore = 0;
+
+  resultText.textContent = "Make your choice to play the game!";
+  playerScoreText.textContent = 0;
+  computerScoreText.textContent = 0;
+
+  enableButtons();
+  resetBtn.classList.toggle("hidden");
+});
